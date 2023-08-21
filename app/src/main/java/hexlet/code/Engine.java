@@ -30,8 +30,6 @@ public class Engine {
                 greetUser();
             } else if (gameExist()) {
                 playGame();
-            } else {
-                break;
             }
         } while (!currentGameCode.equals(EXIT_CODE));
     }
