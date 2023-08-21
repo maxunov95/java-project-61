@@ -24,21 +24,14 @@ public class Engine {
         do {
             showMenu();
 
-            Game currentGame;
             if (currentGameCode == GREET_CODE) {
                 greetUser();
                 continue;
-            } else if (currentGameCode == EVEN_GAME_CODE) {
-                currentGame = new Even();
-            } else if (currentGameCode == CALCULATOR_GAME_CODE) {
-                currentGame = new Calc();
-            } else if (currentGameCode == GCD_GAME_CODE) {
-                currentGame = new GCD();
-            } else if (currentGameCode == PROGRESSION_GAME_CODE) {
-                currentGame = new Progression();
-            } else {
-                SCANNER.close();
-                break;
+            }
+
+            Game currentGame = getCurrentGame();
+            if (currentGame == null) {
+                continue;
             }
 
             greetUser();
@@ -62,6 +55,16 @@ public class Engine {
         currentGameCode = SCANNER.nextInt();
     }
 
+    private static Game getCurrentGame() {
+        return switch (currentGameCode) {
+            case (EVEN_GAME_CODE) -> new Even();
+            case (CALCULATOR_GAME_CODE) -> new Calc();
+            case (GCD_GAME_CODE) -> new GCD();
+            case (PROGRESSION_GAME_CODE) -> new Progression();
+            default -> null;
+        };
+    }
+
     public static void greetUser() {
         System.out.printf("Welcome to the Brain Games!%nMay I have your name? ");
 
@@ -78,11 +81,12 @@ public class Engine {
             String userAnswer = SCANNER.next();
             if (question.userAnswerIsCorrect(userAnswer, userName)) {
                 countCorrectAnswers++;
-                if (countCorrectAnswers == MAX_COUNT_ROUNDS) {
-                    System.out.printf("Congratulations, %s!%n", userName);
-                }
             } else {
                 break;
+            }
+
+            if (countCorrectAnswers == MAX_COUNT_ROUNDS) {
+                System.out.printf("Congratulations, %s!%n", userName);
             }
         }
     }
