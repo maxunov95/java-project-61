@@ -1,33 +1,38 @@
 package hexlet.code.games;
 
-import hexlet.code.Game;
-import hexlet.code.Question;
+public class Progression {
+    private static String sample;
+    private static String correctAnswer;
 
-public class Progression implements Game {
-    @Override
-    public void showRules() {
+    public static void showRules() {
         System.out.println("What number is missing in the progression?");
     }
 
-    @Override
-    public Question getNewQuestion() {
+    public static void updateQuestion() {
         int firstRandomInteger = 1 + (int) (Math.random() * 10);
         int secondRandomInteger = 1 + (int) (Math.random() * 10);
         int randomTerm = 1 + (int) (Math.random() * 10);
         StringBuilder stringBuilder = new StringBuilder();
-        String correctAnswer = "";
 
         int currentInteger = firstRandomInteger;
         for (int i = 0; i < 10; i++) {
             currentInteger = currentInteger + randomTerm;
-            if (i == secondRandomInteger) {
-                stringBuilder.append("... ");
-                correctAnswer = Integer.toString(currentInteger);
-            } else {
+            if (i != secondRandomInteger - 1) {
                 stringBuilder.append(currentInteger).append(" ");
+            } else {
+                stringBuilder.append("... ");
             }
         }
 
-        return new Question(stringBuilder.toString().trim(), correctAnswer);
+        sample = stringBuilder.toString().trim();
+        correctAnswer = Integer.toString(firstRandomInteger + (secondRandomInteger * randomTerm));
+    }
+
+    public static String getSample() {
+        return sample;
+    }
+
+    public static String getCorrectAnswer() {
+        return correctAnswer;
     }
 }

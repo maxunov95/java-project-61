@@ -1,20 +1,18 @@
 package hexlet.code.games;
 
-import hexlet.code.Game;
-import hexlet.code.Question;
+public class Prime {
+    private static String sample;
+    private static String correctAnswer;
 
-public class Prime implements Game {
-    @Override
-    public void showRules() {
+    public static void showRules() {
         System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
     }
 
-    @Override
-    public Question getNewQuestion() {
+    public static void updateQuestion() {
         int randomInteger = (int) (Math.random() * 20);
-        String correctAnswer = (checkIsItPrimeNumber(randomInteger) ? "yes" : "no");
 
-        return new Question(Integer.toString(randomInteger), correctAnswer);
+        sample = Integer.toString(randomInteger);
+        correctAnswer = (checkIsItPrimeNumber(randomInteger) ? "yes" : "no");
     }
 
     private static boolean checkIsItPrimeNumber(int number) {
@@ -24,5 +22,13 @@ public class Prime implements Game {
             }
         }
         return true;
+    }
+
+    public static String getSample() {
+        return sample;
+    }
+
+    public static String getCorrectAnswer() {
+        return correctAnswer;
     }
 }

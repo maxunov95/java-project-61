@@ -1,19 +1,25 @@
 package hexlet.code.games;
 
-import hexlet.code.Game;
-import hexlet.code.Question;
+public class Even {
+    private static String sample;
+    private static String correctAnswer;
 
-public class Even implements Game {
-    @Override
-    public void showRules() {
+    public static void showRules() {
         System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
     }
 
-    @Override
-    public Question getNewQuestion() {
+    public static void updateQuestion() {
         int randomInteger = (int) (Math.random() * 1000000);
-        String correctAnswer = (randomInteger % 2 == 0 ? "yes" : "no");
 
-        return new Question(Integer.toString(randomInteger), correctAnswer);
+        sample = Integer.toString(randomInteger);
+        correctAnswer = (randomInteger % 2 == 0 ? "yes" : "no");
+    }
+
+    public static String getSample() {
+        return sample;
+    }
+
+    public static String getCorrectAnswer() {
+        return correctAnswer;
     }
 }

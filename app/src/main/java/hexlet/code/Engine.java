@@ -19,8 +19,9 @@ public class Engine {
     private static final int PROGRESSION_GAME_CODE = 5;
     private static final int PRIME_GAME_CODE = 6;
 
-    private static int currentGameCode;
+    private static int currentGameCode = -1;
     private static String userName = "NoNameUser";
+    private static String correctAnswer = "";
 
     public static void start() {
         do {
@@ -28,18 +29,9 @@ public class Engine {
 
             if (currentGameCode == GREET_CODE) {
                 greetUser();
-                continue;
+            } else if (currentGameCode > EXIT_CODE && currentGameCode <= PRIME_GAME_CODE) {
+                playGame();
             }
-
-            Game currentGame = getCurrentGame();
-            if (currentGame == null) {
-                continue;
-            }
-
-            greetUser();
-            currentGame.showRules();
-            playGame(currentGame);
-
         } while (currentGameCode != EXIT_CODE);
     }
 
@@ -58,17 +50,6 @@ public class Engine {
         currentGameCode = SCANNER.nextInt();
     }
 
-    private static Game getCurrentGame() {
-        return switch (currentGameCode) {
-            case (EVEN_GAME_CODE) -> new Even();
-            case (CALCULATOR_GAME_CODE) -> new Calc();
-            case (GCD_GAME_CODE) -> new GCD();
-            case (PROGRESSION_GAME_CODE) -> new Progression();
-            case (PRIME_GAME_CODE) -> new Prime();
-            default -> null;
-        };
-    }
-
     private static void greetUser() {
         System.out.printf("Welcome to the Brain Games!%nMay I have your name? ");
 
@@ -76,14 +57,16 @@ public class Engine {
         System.out.printf("Hello, %s!%n", userName);
     }
 
-    private static void playGame(Game currentGame) {
+    private static void playGame() {
+        greetUser();
+        showRules();
+
         int countCorrectAnswers = 0;
         while (countCorrectAnswers < MAX_COUNT_ROUNDS) {
-            Question question = currentGame.getNewQuestion();
-            question.ask();
+            showNextQuestion();
 
             String userAnswer = SCANNER.next();
-            if (question.userAnswerIsCorrect(userAnswer, userName)) {
+            if (userAnswerIsCorrect(userAnswer)) {
                 countCorrectAnswers++;
             } else {
                 break;
@@ -94,4 +77,64 @@ public class Engine {
             }
         }
     }
+
+    private static void showRules() {
+        switch (currentGameCode) {
+            case (EVEN_GAME_CODE) -> Even.showRules();
+            case (CALCULATOR_GAME_CODE) -> Calc.showRules();
+            case (GCD_GAME_CODE) -> GCD.showRules();
+            case (PROGRESSION_GAME_CODE) -> Progression.showRules();
+            case (PRIME_GAME_CODE) -> Prime.showRules();
+            default -> {
+            }
+        }
+    }
+
+    private static void showNextQuestion() {
+        switch (currentGameCode) {
+            case (EVEN_GAME_CODE) -> {
+                Even.updateQuestion();
+                ask(Even.getSample());
+                correctAnswer = Even.getCorrectAnswer();
+            }
+            case (CALCULATOR_GAME_CODE) -> {
+                Calc.updateQuestion();
+                ask(Calc.getSample());
+                correctAnswer = Calc.getCorrectAnswer();
+            }
+            case (GCD_GAME_CODE) -> {
+                GCD.updateQuestion();
+                ask(GCD.getSample());
+                correctAnswer = GCD.getCorrectAnswer();
+            }
+            case (PROGRESSION_GAME_CODE) -> {
+                Progression.updateQuestion();
+                ask(Progression.getSample());
+                correctAnswer = Progression.getCorrectAnswer();
+            }
+            case (PRIME_GAME_CODE) -> {
+                Prime.updateQuestion();
+                ask(Prime.getSample());
+                correctAnswer = Prime.getCorrectAnswer();
+            }
+            default -> {
+            }
+        }
+    }
+
+    private static void ask(String sample) {
+        System.out.printf("Question: %s%nYour answer: ", sample);
+    }
+
+    private static boolean userAnswerIsCorrect(String userAnswer) {
+        if (correctAnswer.equals(userAnswer)) {
+            System.out.println("Correct!");
+            return true;
+        } else {
+            System.out.printf("'%s' is wrong answer ;(. Correct answer was '%s'.%nLet's try again, %s!%n",
+                    userAnswer, correctAnswer, userName);
+            return false;
+        }
+    }
+
 }
