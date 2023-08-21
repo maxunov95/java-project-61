@@ -3,6 +3,7 @@ package hexlet.code;
 import hexlet.code.games.Calc;
 import hexlet.code.games.Even;
 import hexlet.code.games.GCD;
+import hexlet.code.games.Progression;
 
 import java.util.Scanner;
 
@@ -14,6 +15,7 @@ public class Engine {
     private static final int EVEN_GAME_CODE = 2;
     private static final int CALCULATOR_GAME_CODE = 3;
     private static final int GCD_GAME_CODE = 4;
+    private static final int PROGRESSION_GAME_CODE = 5;
 
     private static int currentGameCode;
     private static String userName = "NoNameUser";
@@ -24,6 +26,7 @@ public class Engine {
         System.out.println(EVEN_GAME_CODE + " - Even");
         System.out.println(CALCULATOR_GAME_CODE + " - Calc");
         System.out.println(GCD_GAME_CODE + " - GCD");
+        System.out.println(PROGRESSION_GAME_CODE + " - Progression");
         System.out.println(EXIT_CODE + " - Exit");
 
         System.out.print("Your choice: ");
@@ -45,6 +48,8 @@ public class Engine {
                 currentGame = new Calc();
             } else if (currentGameCode == GCD_GAME_CODE) {
                 currentGame = new GCD();
+            } else if (currentGameCode == PROGRESSION_GAME_CODE) {
+                currentGame = new Progression();
             } else {
                 break;
             }
