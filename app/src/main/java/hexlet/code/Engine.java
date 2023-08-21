@@ -24,14 +24,14 @@ public class Engine {
     private static String correctAnswer = "";
 
     public static void start() {
-        do {
-            showMenu();
-            if (currentGameCode.equals(GREET_CODE)) {
-                greetUser();
-            } else if (gameExist()) {
-                playGame();
-            }
-        } while (!currentGameCode.equals(EXIT_CODE));
+//        do {
+        showMenu();
+        if (currentGameCode.equals(GREET_CODE)) {
+            greetUser();
+        } else if (gameExist()) {
+            playGame();
+        }
+//        } while (!currentGameCode.equals(EXIT_CODE));
     }
 
     private static void showMenu() {
