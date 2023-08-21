@@ -9,9 +9,12 @@ public class GCD {
     }
 
     public static void updateQuestion() {
-        int firstRandomInteger = 2 + (int) (Math.random() * 5);
-        int secondRandomInteger = 2 + (int) (Math.random() * 5);
-        int randomFactor = 2 + (int) (Math.random() * 3);
+        int minValue = 2;
+        int maxValue = 5;
+        int maxValueFactor = 3;
+        int firstRandomInteger = minValue + (int) (Math.random() * maxValue);
+        int secondRandomInteger = minValue + (int) (Math.random() * maxValue);
+        int randomFactor = minValue + (int) (Math.random() * maxValueFactor);
         int difference = firstRandomInteger - secondRandomInteger;
 
         if (difference < 0) {

@@ -9,9 +9,11 @@ public class Progression {
     }
 
     public static void updateQuestion() {
-        int firstRandomInteger = 1 + (int) (Math.random() * 10);
-        int secondRandomInteger = 1 + (int) (Math.random() * 10);
-        int randomTerm = 1 + (int) (Math.random() * 10);
+        int minValue = 1;
+        int maxValue = 10;
+        int firstRandomInteger = minValue + (int) (Math.random() * maxValue);
+        int secondRandomInteger = minValue + (int) (Math.random() * maxValue);
+        int randomTerm = minValue + (int) (Math.random() * maxValue);
         StringBuilder stringBuilder = new StringBuilder();
 
         int currentInteger = firstRandomInteger;

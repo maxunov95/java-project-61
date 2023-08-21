@@ -9,7 +9,8 @@ public class Prime {
     }
 
     public static void updateQuestion() {
-        int randomInteger = (int) (Math.random() * 20);
+        int maxValue = 20;
+        int randomInteger = (int) (Math.random() * maxValue);
 
         sample = Integer.toString(randomInteger);
         correctAnswer = (checkIsItPrimeNumber(randomInteger) ? "yes" : "no");

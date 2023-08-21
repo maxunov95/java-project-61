@@ -11,9 +11,11 @@ public class Calc {
     }
 
     public static void updateQuestion() {
-        int operationRandomInteger = (int) (Math.random() * 3);
-        int firstRandomInteger = (int) (Math.random() * 5);
-        int secondRandomInteger = (int) (Math.random() * 5);
+        int maxValueOperation = 3;
+        int maxValue = 5;
+        int operationRandomInteger = (int) (Math.random() * maxValueOperation);
+        int firstRandomInteger = (int) (Math.random() * maxValue);
+        int secondRandomInteger = (int) (Math.random() * maxValue);
 
         String operation;
 
