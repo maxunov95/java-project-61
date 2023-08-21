@@ -3,7 +3,6 @@ package hexlet.code.games;
 public class Calc {
     private static final int ADDITION_CODE = 0;
     private static final int SUBTRACTION_CODE = 1;
-    private static final int MULTIPLICATION_CODE = 2;
     private static String sample;
     private static String correctAnswer;
 
