@@ -9,10 +9,11 @@ public class Even {
     }
 
     public static void updateQuestion() {
-        int randomInteger = (int) (Math.random() * 1000000);
+        int maxNumber = 10000;
+        int randomNumber = (int) (Math.random() * maxNumber);
 
-        sample = Integer.toString(randomInteger);
-        correctAnswer = (randomInteger % 2 == 0 ? "yes" : "no");
+        sample = Integer.toString(randomNumber);
+        correctAnswer = (randomNumber % 2 == 0 ? "yes" : "no");
     }
 
     public static String getSample() {

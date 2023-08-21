@@ -9,17 +9,17 @@ public class Progression {
     }
 
     public static void updateQuestion() {
-        int minValue = 1;
-        int maxValue = 10;
-        int firstRandomInteger = minValue + (int) (Math.random() * maxValue);
-        int secondRandomInteger = minValue + (int) (Math.random() * maxValue);
-        int randomTerm = minValue + (int) (Math.random() * maxValue);
+        int minNumber = 1;
+        int maxNumber = 10;
+        int firstRandomNumber = minNumber + (int) (Math.random() * maxNumber);
+        int secondRandomNumber = minNumber + (int) (Math.random() * maxNumber);
+        int randomTerm = minNumber + (int) (Math.random() * maxNumber);
         StringBuilder stringBuilder = new StringBuilder();
 
-        int currentInteger = firstRandomInteger;
+        int currentInteger = firstRandomNumber;
         for (int i = 0; i < 10; i++) {
             currentInteger = currentInteger + randomTerm;
-            if (i != secondRandomInteger - 1) {
+            if (i != secondRandomNumber - 1) {
                 stringBuilder.append(currentInteger).append(" ");
             } else {
                 stringBuilder.append(".. ");
@@ -27,7 +27,7 @@ public class Progression {
         }
 
         sample = stringBuilder.toString().trim();
-        correctAnswer = Integer.toString(firstRandomInteger + (secondRandomInteger * randomTerm));
+        correctAnswer = Integer.toString(firstRandomNumber + (secondRandomNumber * randomTerm));
     }
 
     public static String getSample() {

@@ -9,11 +9,11 @@ public class Prime {
     }
 
     public static void updateQuestion() {
-        int maxValue = 20;
-        int randomInteger = (int) (Math.random() * maxValue);
+        int maxNumber = 20;
+        int randomNumber = (int) (Math.random() * maxNumber);
 
-        sample = Integer.toString(randomInteger);
-        correctAnswer = (checkIsItPrimeNumber(randomInteger) ? "yes" : "no");
+        sample = Integer.toString(randomNumber);
+        correctAnswer = (checkIsItPrimeNumber(randomNumber) ? "yes" : "no");
     }
 
     private static boolean checkIsItPrimeNumber(int number) {

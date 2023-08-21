@@ -11,25 +11,25 @@ public class Calc {
     }
 
     public static void updateQuestion() {
-        int maxValueOperation = 3;
-        int maxValue = 5;
-        int operationRandomInteger = (int) (Math.random() * maxValueOperation);
-        int firstRandomInteger = (int) (Math.random() * maxValue);
-        int secondRandomInteger = (int) (Math.random() * maxValue);
+        int maxOperation = 3;
+        int maxNumber = 5;
+        int operationRandomNumber = (int) (Math.random() * maxOperation);
+        int firstRandomNumber = (int) (Math.random() * maxNumber);
+        int secondRandomNumber = (int) (Math.random() * maxNumber);
 
         String operation;
 
-        if (operationRandomInteger == ADDITION_CODE) {
+        if (operationRandomNumber == ADDITION_CODE) {
             operation = " + ";
-            correctAnswer = Integer.toString(firstRandomInteger + secondRandomInteger);
-        } else if (operationRandomInteger == SUBTRACTION_CODE) {
+            correctAnswer = Integer.toString(firstRandomNumber + secondRandomNumber);
+        } else if (operationRandomNumber == SUBTRACTION_CODE) {
             operation = " - ";
-            correctAnswer = Integer.toString(firstRandomInteger - secondRandomInteger);
+            correctAnswer = Integer.toString(firstRandomNumber - secondRandomNumber);
         } else {
             operation = " * ";
-            correctAnswer = Integer.toString(firstRandomInteger * secondRandomInteger);
+            correctAnswer = Integer.toString(firstRandomNumber * secondRandomNumber);
         }
-        sample = firstRandomInteger + operation + secondRandomInteger;
+        sample = firstRandomNumber + operation + secondRandomNumber;
     }
 
     public static String getSample() {

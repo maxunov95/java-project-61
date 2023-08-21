@@ -9,24 +9,24 @@ public class GCD {
     }
 
     public static void updateQuestion() {
-        int minValue = 2;
-        int maxValue = 5;
-        int maxValueFactor = 3;
-        int firstRandomInteger = minValue + (int) (Math.random() * maxValue);
-        int secondRandomInteger = minValue + (int) (Math.random() * maxValue);
-        int randomFactor = minValue + (int) (Math.random() * maxValueFactor);
-        int difference = firstRandomInteger - secondRandomInteger;
+        int minNumber = 2;
+        int maxNumber = 5;
+        int maxFactor = 3;
+        int firstRandomNumber = minNumber + (int) (Math.random() * maxNumber);
+        int secondRandomNumber = minNumber + (int) (Math.random() * maxNumber);
+        int randomFactor = minNumber + (int) (Math.random() * maxFactor);
+        int difference = firstRandomNumber - secondRandomNumber;
 
         if (difference < 0) {
-            correctAnswer = Integer.toString(firstRandomInteger);
-            secondRandomInteger = firstRandomInteger * (randomFactor - 1);
-            firstRandomInteger = firstRandomInteger * randomFactor;
+            correctAnswer = Integer.toString(firstRandomNumber);
+            secondRandomNumber = firstRandomNumber * (randomFactor - 1);
+            firstRandomNumber = firstRandomNumber * randomFactor;
         } else {
-            correctAnswer = Integer.toString(secondRandomInteger);
-            firstRandomInteger = secondRandomInteger * randomFactor;
-            secondRandomInteger = secondRandomInteger * (randomFactor - 1);
+            correctAnswer = Integer.toString(secondRandomNumber);
+            firstRandomNumber = secondRandomNumber * randomFactor;
+            secondRandomNumber = secondRandomNumber * (randomFactor - 1);
         }
-        sample = firstRandomInteger + " " + secondRandomInteger;
+        sample = firstRandomNumber + " " + secondRandomNumber;
     }
 
     public static String getSample() {
