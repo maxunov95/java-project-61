@@ -20,7 +20,7 @@ public class Progression {
             if (i != secondRandomInteger - 1) {
                 stringBuilder.append(currentInteger).append(" ");
             } else {
-                stringBuilder.append("... ");
+                stringBuilder.append(".. ");
             }
         }
 
