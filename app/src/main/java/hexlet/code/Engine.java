@@ -1,9 +1,10 @@
 package hexlet.code;
 
-import hexlet.code.games.Calc;
 import hexlet.code.games.Even;
+import hexlet.code.games.Calc;
 import hexlet.code.games.GCD;
 import hexlet.code.games.Progression;
+import hexlet.code.games.Prime;
 
 import java.util.Scanner;
 
@@ -16,6 +17,7 @@ public class Engine {
     private static final int CALCULATOR_GAME_CODE = 3;
     private static final int GCD_GAME_CODE = 4;
     private static final int PROGRESSION_GAME_CODE = 5;
+    private static final int PRIME_GAME_CODE = 6;
 
     private static int currentGameCode;
     private static String userName = "NoNameUser";
@@ -48,6 +50,7 @@ public class Engine {
         System.out.println(CALCULATOR_GAME_CODE + " - Calc");
         System.out.println(GCD_GAME_CODE + " - GCD");
         System.out.println(PROGRESSION_GAME_CODE + " - Progression");
+        System.out.println(PRIME_GAME_CODE + " - Prime");
         System.out.println(EXIT_CODE + " - Exit");
 
         System.out.print("Your choice: ");
@@ -61,6 +64,7 @@ public class Engine {
             case (CALCULATOR_GAME_CODE) -> new Calc();
             case (GCD_GAME_CODE) -> new GCD();
             case (PROGRESSION_GAME_CODE) -> new Progression();
+            case (PRIME_GAME_CODE) -> new Prime();
             default -> null;
         };
     }

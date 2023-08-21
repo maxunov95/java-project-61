@@ -7,4 +7,5 @@
 [Игра: "Проверка на чётность"](https://asciinema.org/a/LETg3b2px9yFNnzHwaiLbAQSp)\
 [Игра: "Калькулятор"](https://asciinema.org/a/bZFDF1jITDQRYeBdi9LrZafla)\
 [Игра: "НОД"](https://asciinema.org/a/VaUiSdAzQoRC85SS5l2eA7los)\
-[Игра: "Арифметическая прогрессия"](https://asciinema.org/a/J1HGyGnjJ0nIkK9bjO6drrNZH)
+[Игра: "Арифметическая прогрессия"](https://asciinema.org/a/J1HGyGnjJ0nIkK9bjO6drrNZH)\
+[Игра: "Простое ли число?"](https://asciinema.org/a/MvRnFr69HwDwlW4XHgiPaOET7)
