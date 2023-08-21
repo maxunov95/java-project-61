@@ -11,15 +11,15 @@ import java.util.Scanner;
 public class Engine {
     private static final Scanner SCANNER = new Scanner(System.in);
     private static final int MAX_COUNT_ROUNDS = 3;
-    private static final int EXIT_CODE = 0;
-    private static final int GREET_CODE = 1;
-    private static final int EVEN_GAME_CODE = 2;
-    private static final int CALCULATOR_GAME_CODE = 3;
-    private static final int GCD_GAME_CODE = 4;
-    private static final int PROGRESSION_GAME_CODE = 5;
-    private static final int PRIME_GAME_CODE = 6;
+    private static final String EXIT_CODE = "0";
+    private static final String GREET_CODE = "1";
+    private static final String EVEN_GAME_CODE = "2";
+    private static final String CALCULATOR_GAME_CODE = "3";
+    private static final String GCD_GAME_CODE = "4";
+    private static final String PROGRESSION_GAME_CODE = "5";
+    private static final String PRIME_GAME_CODE = "6";
 
-    private static int currentGameCode = -1;
+    private static String currentGameCode = "";
     private static String userName = "NoNameUser";
     private static String correctAnswer = "";
 
@@ -27,12 +27,12 @@ public class Engine {
         do {
             showMenu();
 
-            if (currentGameCode == GREET_CODE) {
+            if (currentGameCode.equals(GREET_CODE)) {
                 greetUser();
-            } else if (currentGameCode > EXIT_CODE && currentGameCode <= PRIME_GAME_CODE) {
+            } else if (!currentGameCode.equals(EXIT_CODE) && !currentGameCode.isEmpty()) {
                 playGame();
             }
-        } while (currentGameCode != EXIT_CODE);
+        } while (!currentGameCode.equals(EXIT_CODE));
     }
 
     private static void showMenu() {
@@ -47,13 +47,13 @@ public class Engine {
 
         System.out.print("Your choice: ");
 
-        currentGameCode = SCANNER.nextInt();
+        currentGameCode = SCANNER.next().trim();
     }
 
     private static void greetUser() {
         System.out.printf("Welcome to the Brain Games!%nMay I have your name? ");
 
-        userName = SCANNER.next();
+        userName = SCANNER.next().trim();
         System.out.printf("Hello, %s!%n", userName);
     }
 
@@ -65,7 +65,7 @@ public class Engine {
         while (countCorrectAnswers < MAX_COUNT_ROUNDS) {
             showNextQuestion();
 
-            String userAnswer = SCANNER.next();
+            String userAnswer = SCANNER.next().trim();
             if (userAnswerIsCorrect(userAnswer)) {
                 countCorrectAnswers++;
             } else {
