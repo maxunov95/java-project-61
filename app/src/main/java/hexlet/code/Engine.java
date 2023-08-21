@@ -20,21 +20,7 @@ public class Engine {
     private static int currentGameCode;
     private static String userName = "NoNameUser";
 
-    public static void showMenu() {
-        System.out.printf("%nPlease enter the game number and press Enter.%n");
-        System.out.println(GREET_CODE + " - Greet");
-        System.out.println(EVEN_GAME_CODE + " - Even");
-        System.out.println(CALCULATOR_GAME_CODE + " - Calc");
-        System.out.println(GCD_GAME_CODE + " - GCD");
-        System.out.println(PROGRESSION_GAME_CODE + " - Progression");
-        System.out.println(EXIT_CODE + " - Exit");
-
-        System.out.print("Your choice: ");
-
-        currentGameCode = SCANNER.nextInt();
-    }
-
-    public static void startGame() {
+    public static void start() {
         do {
             showMenu();
 
@@ -56,25 +42,24 @@ public class Engine {
             }
 
             greetUser();
-
             currentGame.showRules();
+            playGame(currentGame);
 
-            int countCorrectAnswers = 0;
-            while (countCorrectAnswers < MAX_COUNT_ROUNDS) {
-                Question question = currentGame.getNewQuestion();
-                question.ask();
-
-                String userAnswer = SCANNER.next();
-                if (question.userAnswerIsCorrect(userAnswer, userName)) {
-                    countCorrectAnswers++;
-                    if (countCorrectAnswers == MAX_COUNT_ROUNDS) {
-                        System.out.printf("Congratulations, %s!%n", userName);
-                    }
-                } else {
-                    break;
-                }
-            }
         } while (currentGameCode != EXIT_CODE);
+    }
+
+    public static void showMenu() {
+        System.out.printf("%nPlease enter the game number and press Enter.%n");
+        System.out.println(GREET_CODE + " - Greet");
+        System.out.println(EVEN_GAME_CODE + " - Even");
+        System.out.println(CALCULATOR_GAME_CODE + " - Calc");
+        System.out.println(GCD_GAME_CODE + " - GCD");
+        System.out.println(PROGRESSION_GAME_CODE + " - Progression");
+        System.out.println(EXIT_CODE + " - Exit");
+
+        System.out.print("Your choice: ");
+
+        currentGameCode = SCANNER.nextInt();
     }
 
     public static void greetUser() {
@@ -82,5 +67,23 @@ public class Engine {
 
         userName = SCANNER.next();
         System.out.printf("Hello, %s!%n", userName);
+    }
+
+    private static void playGame(Game currentGame) {
+        int countCorrectAnswers = 0;
+        while (countCorrectAnswers < MAX_COUNT_ROUNDS) {
+            Question question = currentGame.getNewQuestion();
+            question.ask();
+
+            String userAnswer = SCANNER.next();
+            if (question.userAnswerIsCorrect(userAnswer, userName)) {
+                countCorrectAnswers++;
+                if (countCorrectAnswers == MAX_COUNT_ROUNDS) {
+                    System.out.printf("Congratulations, %s!%n", userName);
+                }
+            } else {
+                break;
+            }
+        }
     }
 }
