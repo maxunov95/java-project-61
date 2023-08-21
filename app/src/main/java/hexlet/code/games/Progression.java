@@ -28,6 +28,6 @@ public class Progression implements Game {
             }
         }
 
-        return new Question(stringBuilder.toString(), correctAnswer);
+        return new Question(stringBuilder.toString().trim(), correctAnswer);
     }
 }

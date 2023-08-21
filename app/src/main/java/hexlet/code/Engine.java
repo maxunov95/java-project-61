@@ -41,7 +41,7 @@ public class Engine {
         } while (currentGameCode != EXIT_CODE);
     }
 
-    public static void showMenu() {
+    private static void showMenu() {
         System.out.printf("%nPlease enter the game number and press Enter.%n");
         System.out.println(GREET_CODE + " - Greet");
         System.out.println(EVEN_GAME_CODE + " - Even");
@@ -65,7 +65,7 @@ public class Engine {
         };
     }
 
-    public static void greetUser() {
+    private static void greetUser() {
         System.out.printf("Welcome to the Brain Games!%nMay I have your name? ");
 
         userName = SCANNER.next();
