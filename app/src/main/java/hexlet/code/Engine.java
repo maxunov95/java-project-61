@@ -19,20 +19,18 @@ public class Engine {
     private static final String PROGRESSION_GAME_CODE = "5";
     private static final String PRIME_GAME_CODE = "6";
 
-    private static String currentGameCode = "";
+    private static String currentGameCode = "0";
     private static String userName = "NoNameUser";
     private static String correctAnswer = "";
 
     public static void start() {
-        do {
-            showMenu();
+        showMenu();
 
-            if (currentGameCode.equals(GREET_CODE)) {
-                greetUser();
-            } else if (gameExist()) {
-                playGame();
-            }
-        } while (!currentGameCode.equals(EXIT_CODE));
+        if (currentGameCode.equals(GREET_CODE)) {
+            greetUser();
+        } else if (gameExist()) {
+            playGame();
+        }
     }
 
     private static void showMenu() {
