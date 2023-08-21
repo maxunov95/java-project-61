@@ -29,7 +29,7 @@ public class Engine {
 
             if (currentGameCode.equals(GREET_CODE)) {
                 greetUser();
-            } else if (!currentGameCode.equals(EXIT_CODE) && !currentGameCode.isEmpty()) {
+            } else if (gameExist()) {
                 playGame();
             }
         } while (!currentGameCode.equals(EXIT_CODE));
@@ -76,6 +76,14 @@ public class Engine {
                 System.out.printf("Congratulations, %s!%n", userName);
             }
         }
+    }
+
+    private static boolean gameExist() {
+        return switch (currentGameCode) {
+            case (EVEN_GAME_CODE), (CALCULATOR_GAME_CODE), (GCD_GAME_CODE),
+                    (PROGRESSION_GAME_CODE), (PRIME_GAME_CODE) -> true;
+            default -> false;
+        };
     }
 
     private static void showRules() {
