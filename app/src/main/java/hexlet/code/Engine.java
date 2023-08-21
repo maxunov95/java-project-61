@@ -51,6 +51,7 @@ public class Engine {
             } else if (currentGameCode == PROGRESSION_GAME_CODE) {
                 currentGame = new Progression();
             } else {
+                SCANNER.close();
                 break;
             }
 
