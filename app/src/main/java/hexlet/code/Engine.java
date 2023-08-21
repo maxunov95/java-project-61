@@ -48,13 +48,13 @@ public class Engine {
 
         System.out.print("Your choice: ");
 
-        currentGameCode = SCANNER.next().trim();
+        currentGameCode = SCANNER.next();
     }
 
     private static void greetUser() {
         System.out.printf("Welcome to the Brain Games!%nMay I have your name? ");
 
-        userName = SCANNER.next().trim();
+        userName = SCANNER.next();
         System.out.printf("Hello, %s!%n", userName);
     }
 
@@ -66,7 +66,7 @@ public class Engine {
         while (countCorrectAnswers < MAX_COUNT_ROUNDS) {
             showNextQuestion();
 
-            String userAnswer = SCANNER.next().trim();
+            String userAnswer = SCANNER.next();
             if (userAnswerIsCorrect(userAnswer)) {
                 countCorrectAnswers++;
             } else {
