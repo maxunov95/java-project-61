@@ -3,6 +3,8 @@ package hexlet.code.games;
 public class Calc {
     private static final int ADDITION_CODE = 0;
     private static final int SUBTRACTION_CODE = 1;
+    private static final int MAX_OPERATION = 3;
+    private static final int MAX_NUMBER = 5;
     private static String sample;
     private static String correctAnswer;
 
@@ -11,11 +13,9 @@ public class Calc {
     }
 
     public static void updateQuestion() {
-        int maxOperation = 3;
-        int maxNumber = 5;
-        int operationRandomNumber = (int) (Math.random() * maxOperation);
-        int firstRandomNumber = (int) (Math.random() * maxNumber);
-        int secondRandomNumber = (int) (Math.random() * maxNumber);
+        int operationRandomNumber = (int) (Math.random() * MAX_OPERATION);
+        int firstRandomNumber = (int) (Math.random() * MAX_NUMBER);
+        int secondRandomNumber = (int) (Math.random() * MAX_NUMBER);
 
         String operation;
 

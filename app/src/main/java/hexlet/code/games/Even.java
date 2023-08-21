@@ -1,6 +1,7 @@
 package hexlet.code.games;
 
 public class Even {
+    private static final int MAX_NUMBER = 10000;
     private static String sample;
     private static String correctAnswer;
 
@@ -9,8 +10,7 @@ public class Even {
     }
 
     public static void updateQuestion() {
-        int maxNumber = 10000;
-        int randomNumber = (int) (Math.random() * maxNumber);
+        int randomNumber = (int) (Math.random() * MAX_NUMBER);
 
         sample = Integer.toString(randomNumber);
         correctAnswer = (randomNumber % 2 == 0 ? "yes" : "no");
