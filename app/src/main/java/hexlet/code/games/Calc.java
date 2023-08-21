@@ -16,7 +16,6 @@ public class Calc {
         int operationRandomNumber = (int) (Math.random() * maxOperation);
         int firstRandomNumber = (int) (Math.random() * maxNumber);
         int secondRandomNumber = (int) (Math.random() * maxNumber);
-
         String operation;
 
         if (operationRandomNumber == additionCode) {

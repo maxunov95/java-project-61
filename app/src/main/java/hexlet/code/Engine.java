@@ -18,7 +18,6 @@ public class Engine {
     private static final String GCD_GAME_CODE = "4";
     private static final String PROGRESSION_GAME_CODE = "5";
     private static final String PRIME_GAME_CODE = "6";
-
     private static String currentGameCode = "0";
     private static String userName = "NoNameUser";
     private static String correctAnswer = "";
@@ -41,15 +40,12 @@ public class Engine {
         System.out.println(PROGRESSION_GAME_CODE + " - Progression");
         System.out.println(PRIME_GAME_CODE + " - Prime");
         System.out.println(EXIT_CODE + " - Exit");
-
         System.out.print("Your choice: ");
-
         currentGameCode = SCANNER.next();
     }
 
     private static void greetUser() {
         System.out.printf("Welcome to the Brain Games!%nMay I have your name? ");
-
         userName = SCANNER.next();
         System.out.printf("Hello, %s!%n", userName);
     }

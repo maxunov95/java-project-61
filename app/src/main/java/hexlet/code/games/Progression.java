@@ -12,7 +12,6 @@ public class Progression {
         final int minNumber = 1;
         final int maxNumber = 10;
         final int progressionSize = 10;
-
         int firstRandomNumber = minNumber + (int) (Math.random() * maxNumber);
         int secondRandomNumber = minNumber + (int) (Math.random() * maxNumber);
         int randomTerm = minNumber + (int) (Math.random() * maxNumber);

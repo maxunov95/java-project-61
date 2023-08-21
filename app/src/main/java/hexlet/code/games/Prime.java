@@ -11,12 +11,14 @@ public class Prime {
     public static void updateQuestion() {
         final int maxNumber = 20;
         int randomNumber = (int) (Math.random() * maxNumber);
-
         sample = Integer.toString(randomNumber);
         correctAnswer = (checkIsItPrimeNumber(randomNumber) ? "yes" : "no");
     }
 
     private static boolean checkIsItPrimeNumber(int number) {
+        if (number == 1) {
+            return false;
+        }
         for (int i = 2; i < number; i++) {
             if (number % i == 0) {
                 return false;
