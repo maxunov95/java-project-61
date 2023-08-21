@@ -11,6 +11,7 @@ public class Progression {
     public static void updateQuestion() {
         final int minNumber = 1;
         final int maxNumber = 10;
+        final int progressionSize = 10;
 
         int firstRandomNumber = minNumber + (int) (Math.random() * maxNumber);
         int secondRandomNumber = minNumber + (int) (Math.random() * maxNumber);
@@ -18,7 +19,7 @@ public class Progression {
         StringBuilder stringBuilder = new StringBuilder();
 
         int currentInteger = firstRandomNumber;
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < progressionSize; i++) {
             currentInteger = currentInteger + randomTerm;
             if (i != secondRandomNumber - 1) {
                 stringBuilder.append(currentInteger).append(" ");
