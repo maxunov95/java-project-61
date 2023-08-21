@@ -1,8 +1,6 @@
 package hexlet.code.games;
 
 public class Progression {
-    private static final int MIN_NUMBER = 1;
-    private static final int MAX_NUMBER = 10;
     private static String sample;
     private static String correctAnswer;
 
@@ -11,9 +9,12 @@ public class Progression {
     }
 
     public static void updateQuestion() {
-        int firstRandomNumber = MIN_NUMBER + (int) (Math.random() * MAX_NUMBER);
-        int secondRandomNumber = MIN_NUMBER + (int) (Math.random() * MAX_NUMBER);
-        int randomTerm = MIN_NUMBER + (int) (Math.random() * MAX_NUMBER);
+        final int minNumber = 1;
+        final int maxNumber = 10;
+
+        int firstRandomNumber = minNumber + (int) (Math.random() * maxNumber);
+        int secondRandomNumber = minNumber + (int) (Math.random() * maxNumber);
+        int randomTerm = minNumber + (int) (Math.random() * maxNumber);
         StringBuilder stringBuilder = new StringBuilder();
 
         int currentInteger = firstRandomNumber;

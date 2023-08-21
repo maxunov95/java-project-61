@@ -1,7 +1,6 @@
 package hexlet.code.games;
 
 public class Prime {
-    private static final int MAX_NUMBER = 20;
     private static String sample;
     private static String correctAnswer;
 
@@ -10,7 +9,8 @@ public class Prime {
     }
 
     public static void updateQuestion() {
-        int randomNumber = (int) (Math.random() * MAX_NUMBER);
+        final int maxNumber = 20;
+        int randomNumber = (int) (Math.random() * maxNumber);
 
         sample = Integer.toString(randomNumber);
         correctAnswer = (checkIsItPrimeNumber(randomNumber) ? "yes" : "no");
