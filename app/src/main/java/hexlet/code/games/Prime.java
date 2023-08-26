@@ -1,22 +1,24 @@
 package hexlet.code.games;
 
+import hexlet.code.Engine;
+import hexlet.code.Utils;
+
 public class Prime {
-    private static String sample;
-    private static String correctAnswer;
+    public static void run() {
+        String rules = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
+        String[][] rounds = new String[Engine.MAX_COUNT_ROUNDS][2];
 
-    public static void showRules() {
-        System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
-    }
+        for (int i = 0; i < Engine.MAX_COUNT_ROUNDS; i++) {
+            int randomNumber = Utils.getRandomNumber(0, 20);
 
-    public static void updateQuestion() {
-        final int maxNumber = 20;
-        int randomNumber = (int) (Math.random() * maxNumber);
-        sample = Integer.toString(randomNumber);
-        correctAnswer = (checkIsItPrimeNumber(randomNumber) ? "yes" : "no");
+            rounds[i][0] = Integer.toString(randomNumber);
+            rounds[i][1] = (checkIsItPrimeNumber(randomNumber) ? "yes" : "no");
+        }
+        Engine.run(rules, rounds);
     }
 
     private static boolean checkIsItPrimeNumber(int number) {
-        if (number == 1) {
+        if (number == 0 || number == 1) {
             return false;
         }
         for (int i = 2; i < number; i++) {
@@ -25,13 +27,5 @@ public class Prime {
             }
         }
         return true;
-    }
-
-    public static String getSample() {
-        return sample;
-    }
-
-    public static String getCorrectAnswer() {
-        return correctAnswer;
     }
 }

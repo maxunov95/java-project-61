@@ -1,39 +1,31 @@
 package hexlet.code.games;
 
+import hexlet.code.Engine;
+import hexlet.code.Utils;
+
 public class GCD {
-    private static String sample;
-    private static String correctAnswer;
+    public static void run() {
+        String rules = "Find the greatest common divisor of given numbers.";
+        String[][] rounds = new String[Engine.MAX_COUNT_ROUNDS][2];
 
-    public static void showRules() {
-        System.out.println("Find the greatest common divisor of given numbers.");
-    }
+        for (int i = 0; i < Engine.MAX_COUNT_ROUNDS; i++) {
+            int firstNumber = Utils.getRandomNumber(0, 5);
+            int secondNumber = Utils.getRandomNumber(0, 5);
 
-    public static void updateQuestion() {
-        final int minNumber = 2;
-        final int maxNumber = 5;
-        final int maxFactor = 3;
-        int firstRandomNumber = minNumber + (int) (Math.random() * maxNumber);
-        int secondRandomNumber = minNumber + (int) (Math.random() * maxNumber);
-        int randomFactor = minNumber + (int) (Math.random() * maxFactor);
-        int difference = firstRandomNumber - secondRandomNumber;
-
-        if (difference < 0) {
-            correctAnswer = Integer.toString(firstRandomNumber);
-            secondRandomNumber = firstRandomNumber * (randomFactor - 1);
-            firstRandomNumber = firstRandomNumber * randomFactor;
-        } else {
-            correctAnswer = Integer.toString(secondRandomNumber);
-            firstRandomNumber = secondRandomNumber * randomFactor;
-            secondRandomNumber = secondRandomNumber * (randomFactor - 1);
+            rounds[i][0] = firstNumber + " " + secondNumber;
+            rounds[i][1] = Integer.toString(gcd(firstNumber, secondNumber));
         }
-        sample = firstRandomNumber + " " + secondRandomNumber;
+        Engine.run(rules, rounds);
     }
 
-    public static String getSample() {
-        return sample;
-    }
-
-    public static String getCorrectAnswer() {
-        return correctAnswer;
+    private static int gcd(int a, int b) {
+        while (a != 0 && b != 0) {
+            if (a > b) {
+                a = a % b;
+            } else {
+                b = b % a;
+            }
+        }
+        return a + b;
     }
 }

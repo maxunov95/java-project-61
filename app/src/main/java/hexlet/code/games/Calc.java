@@ -1,41 +1,27 @@
 package hexlet.code.games;
 
+import hexlet.code.Engine;
+import hexlet.code.Utils;
+
 public class Calc {
-    private static String sample;
-    private static String correctAnswer;
+    public static void run() {
+        String rules = "What is the result of the expression?";
+        String[][] rounds = new String[Engine.MAX_COUNT_ROUNDS][2];
+        String[] operators = {" + ", " - ", " * "};
 
-    public static void showRules() {
-        System.out.println("What is the result of the expression?");
-    }
+        for (int i = 0; i < Engine.MAX_COUNT_ROUNDS; i++) {
+            int randomNumber = Utils.getRandomNumber(0, operators.length - 1);
+            String operator = operators[randomNumber];
+            int firstNumber = Utils.getRandomNumber(0, 5);
+            int secondNumber = Utils.getRandomNumber(0, 5);
 
-    public static void updateQuestion() {
-        final int additionCode = 0;
-        final int subtractionCode = 1;
-        final int maxOperation = 3;
-        final int maxNumber = 5;
-        int operationRandomNumber = (int) (Math.random() * maxOperation);
-        int firstRandomNumber = (int) (Math.random() * maxNumber);
-        int secondRandomNumber = (int) (Math.random() * maxNumber);
-        String operation;
-
-        if (operationRandomNumber == additionCode) {
-            operation = " + ";
-            correctAnswer = Integer.toString(firstRandomNumber + secondRandomNumber);
-        } else if (operationRandomNumber == subtractionCode) {
-            operation = " - ";
-            correctAnswer = Integer.toString(firstRandomNumber - secondRandomNumber);
-        } else {
-            operation = " * ";
-            correctAnswer = Integer.toString(firstRandomNumber * secondRandomNumber);
+            rounds[i][0] = Integer.toString(firstNumber) + operator + Integer.toString(secondNumber);
+            rounds[i][1] = switch (operator) {
+                case (" + ") -> Integer.toString(firstNumber + secondNumber);
+                case (" - ") -> Integer.toString(firstNumber - secondNumber);
+                default -> Integer.toString(firstNumber * secondNumber);
+            };
         }
-        sample = firstRandomNumber + operation + secondRandomNumber;
-    }
-
-    public static String getSample() {
-        return sample;
-    }
-
-    public static String getCorrectAnswer() {
-        return correctAnswer;
+        Engine.run(rules, rounds);
     }
 }

@@ -1,26 +1,18 @@
 package hexlet.code.games;
 
+import hexlet.code.Engine;
+import hexlet.code.Utils;
+
 public class Even {
-    private static String sample;
-    private static String correctAnswer;
+    public static void run() {
+        String rules = "Answer 'yes' if the number is even, otherwise answer 'no'.";
+        String[][] rounds = new String[Engine.MAX_COUNT_ROUNDS][2];
 
-    public static void showRules() {
-        System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
-    }
-
-    public static void updateQuestion() {
-        final int maxNumber = 10000;
-        int randomNumber = (int) (Math.random() * maxNumber);
-
-        sample = Integer.toString(randomNumber);
-        correctAnswer = (randomNumber % 2 == 0 ? "yes" : "no");
-    }
-
-    public static String getSample() {
-        return sample;
-    }
-
-    public static String getCorrectAnswer() {
-        return correctAnswer;
+        for (int i = 0; i < Engine.MAX_COUNT_ROUNDS; i++) {
+            int randomNumber = Utils.getRandomNumber(0, 10000);
+            rounds[i][0] = Integer.toString(randomNumber);
+            rounds[i][1] = (randomNumber % 2 == 0 ? "yes" : "no");
+        }
+        Engine.run(rules, rounds);
     }
 }

@@ -1,41 +1,32 @@
 package hexlet.code.games;
 
+import hexlet.code.Engine;
+import hexlet.code.Utils;
+
 public class Progression {
-    private static String sample;
-    private static String correctAnswer;
+    public static void run() {
+        String rules = "What number is missing in the progression?";
+        String[][] rounds = new String[Engine.MAX_COUNT_ROUNDS][2];
 
-    public static void showRules() {
-        System.out.println("What number is missing in the progression?");
-    }
+        for (int i = 0; i < Engine.MAX_COUNT_ROUNDS; i++) {
+            final int progressionSize = 10;
+            int firstNumber = Utils.getRandomNumber(1, 10);
+            int secondNumber = Utils.getRandomNumber(1, 10);
+            int randomTerm = Utils.getRandomNumber(1, 10);
+            StringBuilder stringBuilder = new StringBuilder();
 
-    public static void updateQuestion() {
-        final int minNumber = 1;
-        final int maxNumber = 10;
-        final int progressionSize = 10;
-        int firstRandomNumber = minNumber + (int) (Math.random() * maxNumber);
-        int secondRandomNumber = minNumber + (int) (Math.random() * maxNumber);
-        int randomTerm = minNumber + (int) (Math.random() * maxNumber);
-        StringBuilder stringBuilder = new StringBuilder();
-
-        int currentInteger = firstRandomNumber;
-        for (int i = 0; i < progressionSize; i++) {
-            currentInteger = currentInteger + randomTerm;
-            if (i != secondRandomNumber - 1) {
-                stringBuilder.append(currentInteger).append(" ");
-            } else {
-                stringBuilder.append(".. ");
+            int currentInteger = firstNumber;
+            for (int k = 0; k < progressionSize; k++) {
+                currentInteger = currentInteger + randomTerm;
+                if (k != secondNumber - 1) {
+                    stringBuilder.append(currentInteger).append(" ");
+                } else {
+                    stringBuilder.append(".. ");
+                }
             }
+            rounds[i][0] = stringBuilder.toString().trim();
+            rounds[i][1] = Integer.toString(firstNumber + (secondNumber * randomTerm));
         }
-
-        sample = stringBuilder.toString().trim();
-        correctAnswer = Integer.toString(firstRandomNumber + (secondRandomNumber * randomTerm));
-    }
-
-    public static String getSample() {
-        return sample;
-    }
-
-    public static String getCorrectAnswer() {
-        return correctAnswer;
+        Engine.run(rules, rounds);
     }
 }
