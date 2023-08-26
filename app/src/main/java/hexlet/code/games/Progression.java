@@ -9,10 +9,11 @@ public class Progression {
         String[][] rounds = new String[Engine.MAX_COUNT_ROUNDS][2];
 
         for (int i = 0; i < Engine.MAX_COUNT_ROUNDS; i++) {
+            final int maxValue = 10;
             final int progressionSize = 10;
-            int firstNumber = Utils.getRandomNumber(1, 10);
-            int secondNumber = Utils.getRandomNumber(1, 10);
-            int randomTerm = Utils.getRandomNumber(1, 10);
+            int firstNumber = Utils.getRandomNumber(1, maxValue);
+            int secondNumber = Utils.getRandomNumber(1, maxValue);
+            int randomTerm = Utils.getRandomNumber(1, maxValue);
             StringBuilder stringBuilder = new StringBuilder();
 
             int currentInteger = firstNumber;

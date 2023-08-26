@@ -9,7 +9,8 @@ public class Prime {
         String[][] rounds = new String[Engine.MAX_COUNT_ROUNDS][2];
 
         for (int i = 0; i < Engine.MAX_COUNT_ROUNDS; i++) {
-            int randomNumber = Utils.getRandomNumber(0, 20);
+            final int maxValue = 20;
+            int randomNumber = Utils.getRandomNumber(0, maxValue);
 
             rounds[i][0] = Integer.toString(randomNumber);
             rounds[i][1] = (checkIsItPrimeNumber(randomNumber) ? "yes" : "no");

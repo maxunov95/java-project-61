@@ -9,8 +9,9 @@ public class GCD {
         String[][] rounds = new String[Engine.MAX_COUNT_ROUNDS][2];
 
         for (int i = 0; i < Engine.MAX_COUNT_ROUNDS; i++) {
-            int firstNumber = Utils.getRandomNumber(0, 5);
-            int secondNumber = Utils.getRandomNumber(0, 5);
+            final int maxValue = 5;
+            int firstNumber = Utils.getRandomNumber(0, maxValue);
+            int secondNumber = Utils.getRandomNumber(0, maxValue);
 
             rounds[i][0] = firstNumber + " " + secondNumber;
             rounds[i][1] = Integer.toString(gcd(firstNumber, secondNumber));
