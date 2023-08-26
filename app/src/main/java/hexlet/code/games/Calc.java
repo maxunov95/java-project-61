@@ -10,14 +10,15 @@ public class Calc {
         String[] operators = {" + ", " - ", " * "};
 
         for (int i = 0; i < Engine.MAX_COUNT_ROUNDS; i++) {
+            final int minValue = 0;
             final int maxValue = 5;
-            int randomNumber = Utils.getRandomNumber(0, operators.length - 1);
+            int randomNumber = Utils.getRandomNumber(minValue, operators.length - 1);
             String operator = operators[randomNumber];
-            int firstNumber = Utils.getRandomNumber(0, maxValue);
-            int secondNumber = Utils.getRandomNumber(0, maxValue);
+            int firstNumber = Utils.getRandomNumber(minValue, maxValue);
+            int secondNumber = Utils.getRandomNumber(minValue, maxValue);
 
-            rounds[i][0] = Integer.toString(firstNumber) + operator + Integer.toString(secondNumber);
-            rounds[i][1] = switch (operator) {
+            rounds[i][Engine.INDEX_ROUND_QUESTION] = firstNumber + operator + secondNumber;
+            rounds[i][Engine.INDEX_ROUND_ANSWER] = switch (operator) {
                 case (" + ") -> Integer.toString(firstNumber + secondNumber);
                 case (" - ") -> Integer.toString(firstNumber - secondNumber);
                 default -> Integer.toString(firstNumber * secondNumber);

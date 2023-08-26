@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public class Engine {
     public static final int MAX_COUNT_ROUNDS = 3;
+    public static final int INDEX_ROUND_QUESTION = 0;
+    public static final int INDEX_ROUND_ANSWER = 1;
     private static final Scanner SCANNER = new Scanner(System.in);
 
     public static void run(String rules, String[][] rounds) {
