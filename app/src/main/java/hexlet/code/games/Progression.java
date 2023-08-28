@@ -5,8 +5,8 @@ import hexlet.code.Utils;
 
 public class Progression {
     public static void run() {
-        String rules = "What number is missing in the progression?";
-        String[][] rounds = new String[Engine.MAX_COUNT_ROUNDS][2];
+        final String rules = "What number is missing in the progression?";
+        final String[][] rounds = new String[Engine.MAX_COUNT_ROUNDS][2];
 
         for (int i = 0; i < Engine.MAX_COUNT_ROUNDS; i++) {
             final int minValue = 1;

@@ -12,21 +12,19 @@ public class Engine {
         String userName = greetUser();
         System.out.println(rules);
 
-        int countCorrectAnswers = 0;
-        while (countCorrectAnswers < MAX_COUNT_ROUNDS) {
-            System.out.printf("Question: %s%nYour answer: ", rounds[countCorrectAnswers][0]);
+        for (int i = 0; i < MAX_COUNT_ROUNDS; i++) {
+            System.out.printf("Question: %s%nYour answer: ", rounds[i][0]);
 
             String userAnswer = SCANNER.next();
-            if (rounds[countCorrectAnswers][1].equals(userAnswer)) {
+            if (rounds[i][1].equals(userAnswer)) {
                 System.out.println("Correct!");
-                countCorrectAnswers++;
             } else {
                 System.out.printf("'%s' is wrong answer ;(. Correct answer was '%s'.%nLet's try again, %s!%n",
-                        userAnswer, rounds[countCorrectAnswers][1], userName);
+                        userAnswer, rounds[i][1], userName);
                 break;
             }
 
-            if (countCorrectAnswers == MAX_COUNT_ROUNDS) {
+            if (i == MAX_COUNT_ROUNDS - 1) {
                 System.out.printf("Congratulations, %s!%n", userName);
             }
         }
@@ -37,5 +35,9 @@ public class Engine {
         String userName = SCANNER.next();
         System.out.printf("Hello, %s!%n", userName);
         return userName;
+    }
+
+    public static String getUserAnswer() {
+        return SCANNER.next();
     }
 }

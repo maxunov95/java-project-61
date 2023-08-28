@@ -5,8 +5,8 @@ import hexlet.code.Utils;
 
 public class Prime {
     public static void run() {
-        String rules = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
-        String[][] rounds = new String[Engine.MAX_COUNT_ROUNDS][2];
+        final String rules = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
+        final String[][] rounds = new String[Engine.MAX_COUNT_ROUNDS][2];
 
         for (int i = 0; i < Engine.MAX_COUNT_ROUNDS; i++) {
             final int minValue = 0;

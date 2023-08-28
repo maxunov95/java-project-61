@@ -7,35 +7,28 @@ import hexlet.code.games.Prime;
 import hexlet.code.games.Progression;
 
 public class App {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
-        final String exitCode = "0";
-        final String greetCode = "1";
-        final String evenGameCode = "2";
-        final String calculatorGameCode = "3";
-        final String gcdGameCode = "4";
-        final String progressionGameCode = "5";
-        final String primeGameCode = "6";
+        System.out.print("""
+            Please enter the game number and press Enter.
+            1 - Greet
+            2 - Even
+            3 - Calc
+            4 - GCD
+            5 - Progression
+            6 - Prime
+            0 - Exit
+            Your choice:\s""");
 
-        System.out.printf("%nPlease enter the game number and press Enter.%n");
-        System.out.println(greetCode + " - Greet");
-        System.out.println(evenGameCode + " - Even");
-        System.out.println(calculatorGameCode + " - Calc");
-        System.out.println(gcdGameCode + " - GCD");
-        System.out.println(progressionGameCode + " - Progression");
-        System.out.println(primeGameCode + " - Prime");
-        System.out.println(exitCode + " - Exit");
-        System.out.print("Your choice: ");
-
-        String userChoice = Utils.getUserAnswer();
+        String userChoice = Engine.getUserAnswer();
 
         switch (userChoice) {
-            case (evenGameCode) -> Even.run();
-            case (calculatorGameCode) -> Calc.run();
-            case (gcdGameCode) -> GCD.run();
-            case (progressionGameCode) -> Progression.run();
-            case (primeGameCode) -> Prime.run();
-            case (greetCode) -> Engine.greetUser();
+            case ("1") -> Engine.greetUser();
+            case ("2") -> Even.run();
+            case ("3") -> Calc.run();
+            case ("4") -> GCD.run();
+            case ("5") -> Progression.run();
+            case ("6") -> Prime.run();
             default -> { }
         }
     }
