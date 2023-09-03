@@ -9,14 +9,24 @@ public class Prime {
         final String[][] rounds = new String[Engine.MAX_COUNT_ROUNDS][2];
 
         for (int i = 0; i < Engine.MAX_COUNT_ROUNDS; i++) {
-            final int minValue = 0;
-            final int maxValue = 20;
-            int randomNumber = Utils.getRandomNumber(minValue, maxValue);
-
-            rounds[i][Engine.INDEX_ROUND_QUESTION] = Integer.toString(randomNumber);
-            rounds[i][Engine.INDEX_ROUND_ANSWER] = (checkIsItPrimeNumber(randomNumber) ? "yes" : "no");
+            rounds[i] = generateRoundData();
         }
         Engine.run(rules, rounds);
+    }
+
+    private static String[] generateRoundData() {
+        final int minValue = 0;
+        final int maxValue = 20;
+        int randomNumber = Utils.getRandomNumber(minValue, maxValue);
+
+        String question = Integer.toString(randomNumber);
+        String answer = getAnswer(randomNumber);
+
+        return new String[] {question, answer};
+    }
+
+    private static String getAnswer(int randomNumber) {
+        return checkIsItPrimeNumber(randomNumber) ? "yes" : "no";
     }
 
     private static boolean checkIsItPrimeNumber(int number) {

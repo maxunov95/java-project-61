@@ -9,15 +9,25 @@ public class GCD {
         final String[][] rounds = new String[Engine.MAX_COUNT_ROUNDS][2];
 
         for (int i = 0; i < Engine.MAX_COUNT_ROUNDS; i++) {
-            final int minValue = 0;
-            final int maxValue = 5;
-            int firstNumber = Utils.getRandomNumber(minValue, maxValue);
-            int secondNumber = Utils.getRandomNumber(minValue, maxValue);
-
-            rounds[i][Engine.INDEX_ROUND_QUESTION] = firstNumber + " " + secondNumber;
-            rounds[i][Engine.INDEX_ROUND_ANSWER] = Integer.toString(gcd(firstNumber, secondNumber));
+            rounds[i] = generateRoundData();
         }
         Engine.run(rules, rounds);
+    }
+
+    private static String[] generateRoundData() {
+        final int minValue = 0;
+        final int maxValue = 5;
+        int firstNumber = Utils.getRandomNumber(minValue, maxValue);
+        int secondNumber = Utils.getRandomNumber(minValue, maxValue);
+
+        String question = firstNumber + " " + secondNumber;
+        String answer = getAnswer(firstNumber, secondNumber);
+
+        return new String[] {question, answer};
+    }
+
+    private static String getAnswer(int firstNumber, int secondNumber) {
+        return Integer.toString(gcd(firstNumber, secondNumber));
     }
 
     private static int gcd(int a, int b) {
