@@ -27,11 +27,11 @@ public class Engine {
     private static boolean checkAnswer(String[][] rounds, int i, String userAnswer, String userName) {
         if (rounds[i][1].equals(userAnswer)) {
             System.out.println("Correct!");
-            return false;
+            return true;
         } else {
             System.out.printf("'%s' is wrong answer ;(. Correct answer was '%s'.%nLet's try again, %s!%n",
                     userAnswer, rounds[i][1], userName);
-            return true;
+            return false;
         }
     }
 
