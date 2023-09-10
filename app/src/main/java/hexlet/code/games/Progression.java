@@ -17,11 +17,12 @@ public class Progression {
     private static String[] generateRoundData() {
         final int minValue = 1;
         final int maxValue = 10;
+        final int progressionSize = 10;
         int firstNumber = Utils.getRandomNumber(minValue, maxValue);
-        int hiddenIndex = Utils.getRandomNumber(minValue, maxValue);
+        int hiddenIndex = Utils.getRandomNumber(0, progressionSize - 1);
         int randomTerm = Utils.getRandomNumber(minValue, maxValue);
 
-        String[] progression = getProgression(firstNumber, randomTerm);
+        String[] progression = getProgression(progressionSize, firstNumber, randomTerm);
 
         String answer = progression[hiddenIndex];
         String question = getQuestion(progression, hiddenIndex);
@@ -29,8 +30,7 @@ public class Progression {
         return new String[] {question, answer};
     }
 
-    private static String[] getProgression(int firstNumber, int randomTerm) {
-        final int progressionSize = 10;
+    private static String[] getProgression(int progressionSize, int firstNumber, int randomTerm) {
         String[] progression = new String[progressionSize];
         int currentInteger = firstNumber;
         for (int i = 0; i < progressionSize; i++) {
