@@ -18,31 +18,37 @@ public class Progression {
         final int minValue = 1;
         final int maxValue = 10;
         int firstNumber = Utils.getRandomNumber(minValue, maxValue);
-        int secondNumber = Utils.getRandomNumber(minValue, maxValue);
+        int hiddenIndex = Utils.getRandomNumber(minValue, maxValue);
         int randomTerm = Utils.getRandomNumber(minValue, maxValue);
 
-        String question = getQuestion(firstNumber, randomTerm, secondNumber);
-        String answer = getAnswer(firstNumber, secondNumber, randomTerm);
+        String[] progression = getProgression(firstNumber, randomTerm);
+
+        String answer = progression[hiddenIndex];
+        String question = getQuestion(progression, hiddenIndex);
 
         return new String[] {question, answer};
     }
 
-    private static String getQuestion(int firstNumber, int randomTerm, int secondNumber) {
+    private static String[] getProgression(int firstNumber, int randomTerm) {
         final int progressionSize = 10;
-        StringBuilder stringBuilder = new StringBuilder();
+        String[] progression = new String[progressionSize];
         int currentInteger = firstNumber;
-        for (int k = 0; k < progressionSize; k++) {
+        for (int i = 0; i < progressionSize; i++) {
             currentInteger = currentInteger + randomTerm;
-            if (k != secondNumber - 1) {
-                stringBuilder.append(currentInteger).append(" ");
+            progression[i] = Integer.toString(currentInteger);
+        }
+        return progression;
+    }
+
+    private static String getQuestion(String[] progression, int hiddenIndex) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < progression.length; i++) {
+            if (i != hiddenIndex) {
+                stringBuilder.append(progression[i]).append(" ");
             } else {
                 stringBuilder.append(".. ");
             }
         }
         return stringBuilder.toString().trim();
-    }
-
-    private static String getAnswer(int firstNumber, int secondNumber, int randomTerm) {
-        return Integer.toString(firstNumber + (secondNumber * randomTerm));
     }
 }
