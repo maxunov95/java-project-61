@@ -4,21 +4,21 @@ import hexlet.code.Engine;
 import hexlet.code.Utils;
 
 public class GCD {
+    private static final int MIN_VALUE = 0;
+    private static final int MAX_VALUE = 5;
+
     public static void run() {
-        final String rules = "Find the greatest common divisor of given numbers.";
-        final String[][] rounds = new String[Engine.MAX_COUNT_ROUNDS][2];
+        String[][] rounds = new String[Engine.MAX_COUNT_ROUNDS][2];
 
         for (int i = 0; i < Engine.MAX_COUNT_ROUNDS; i++) {
             rounds[i] = generateRoundData();
         }
-        Engine.run(rules, rounds);
+        Engine.run("Find the greatest common divisor of given numbers.", rounds);
     }
 
     private static String[] generateRoundData() {
-        final int minValue = 0;
-        final int maxValue = 5;
-        int firstNumber = Utils.getRandomNumber(minValue, maxValue);
-        int secondNumber = Utils.getRandomNumber(minValue, maxValue);
+        int firstNumber = Utils.getRandomNumber(MIN_VALUE, MAX_VALUE);
+        int secondNumber = Utils.getRandomNumber(MIN_VALUE, MAX_VALUE);
 
         String question = firstNumber + " " + secondNumber;
         String answer = getAnswer(firstNumber, secondNumber);

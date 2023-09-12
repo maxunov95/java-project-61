@@ -4,20 +4,20 @@ import hexlet.code.Engine;
 import hexlet.code.Utils;
 
 public class Prime {
+    private static final int MIN_VALUE = 0;
+    private static final int MAX_VALUE = 20;
+
     public static void run() {
-        final String rules = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
-        final String[][] rounds = new String[Engine.MAX_COUNT_ROUNDS][2];
+        String[][] rounds = new String[Engine.MAX_COUNT_ROUNDS][2];
 
         for (int i = 0; i < Engine.MAX_COUNT_ROUNDS; i++) {
             rounds[i] = generateRoundData();
         }
-        Engine.run(rules, rounds);
+        Engine.run("Answer 'yes' if given number is prime. Otherwise answer 'no'.", rounds);
     }
 
     private static String[] generateRoundData() {
-        final int minValue = 0;
-        final int maxValue = 20;
-        int randomNumber = Utils.getRandomNumber(minValue, maxValue);
+        int randomNumber = Utils.getRandomNumber(MIN_VALUE, MAX_VALUE);
 
         String question = Integer.toString(randomNumber);
         String answer = getAnswer(randomNumber);

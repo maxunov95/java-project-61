@@ -4,27 +4,27 @@ import hexlet.code.Engine;
 import hexlet.code.Utils;
 
 public class Even {
+    private static final int MIN_VALUE = 0;
+    private static final int MAX_VALUE = 10000;
+
     public static void run() {
-        final String rules = "Answer 'yes' if the number is even, otherwise answer 'no'.";
-        final String[][] rounds = new String[Engine.MAX_COUNT_ROUNDS][2];
+        String[][] rounds = new String[Engine.MAX_COUNT_ROUNDS][2];
 
         for (int i = 0; i < Engine.MAX_COUNT_ROUNDS; i++) {
             rounds[i] = generateRoundData();
         }
-        Engine.run(rules, rounds);
+        Engine.run("Answer 'yes' if the number is even, otherwise answer 'no'.", rounds);
     }
 
     private static String[] generateRoundData() {
-        final int minValue = 0;
-        final int maxValue = 10000;
-        int randomNumber = Utils.getRandomNumber(minValue, maxValue);
+        int randomNumber = Utils.getRandomNumber(MIN_VALUE, MAX_VALUE);
         String question = Integer.toString(randomNumber);
-        String answer = getAnswer(randomNumber);
+        String answer = (isEven(randomNumber)  ? "yes" : "no");
 
         return new String[] {question, answer};
     }
 
-    private static String getAnswer(int randomNumber) {
-        return randomNumber % 2 == 0 ? "yes" : "no";
+    private static boolean isEven(int randomNumber) {
+        return randomNumber % 2 == 0;
     }
 }

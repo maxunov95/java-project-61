@@ -6,6 +6,8 @@ import hexlet.code.games.GCD;
 import hexlet.code.games.Prime;
 import hexlet.code.games.Progression;
 
+import java.util.Scanner;
+
 public class App {
     public static void main(String[] args) throws Exception {
 
@@ -20,10 +22,11 @@ public class App {
             0 - Exit
             Your choice:\s""");
 
-        String userChoice = Engine.getUserAnswer();
+        Scanner scanner = new Scanner(System.in);
+        String userChoice = scanner.next();
 
         switch (userChoice) {
-            case ("1") -> Engine.greetUser();
+            case ("1") -> Engine.greetUser(scanner);
             case ("2") -> Even.run();
             case ("3") -> Calc.run();
             case ("4") -> GCD.run();
@@ -31,5 +34,6 @@ public class App {
             case ("6") -> Prime.run();
             default -> { }
         }
+        scanner.close();
     }
 }

@@ -4,24 +4,24 @@ import hexlet.code.Engine;
 import hexlet.code.Utils;
 
 public class Calc {
+    private static final String[] OPERATORS = {"+", "-", "*"};
+    private static final int MIN_VALUE = 0;
+    private static final int MAX_VALUE = 5;
+
     public static void run() throws Exception {
-        final String rules = "What is the result of the expression?";
-        final String[][] rounds = new String[Engine.MAX_COUNT_ROUNDS][2];
+        String[][] rounds = new String[Engine.MAX_COUNT_ROUNDS][2];
 
         for (int i = 0; i < Engine.MAX_COUNT_ROUNDS; i++) {
             rounds[i] = generateRoundData();
         }
-        Engine.run(rules, rounds);
+        Engine.run("What is the result of the expression?", rounds);
     }
 
     private static String[] generateRoundData() throws Exception {
-        final String[] operators = {"+", "-", "*"};
-        final int minValue = 0;
-        final int maxValue = 5;
-        int randomNumber = Utils.getRandomNumber(minValue, operators.length - 1);
-        String operator = operators[randomNumber];
-        int firstNumber = Utils.getRandomNumber(minValue, maxValue);
-        int secondNumber = Utils.getRandomNumber(minValue, maxValue);
+        int randomNumber = Utils.getRandomNumber(MIN_VALUE, OPERATORS.length - 1);
+        String operator = OPERATORS[randomNumber];
+        int firstNumber = Utils.getRandomNumber(MIN_VALUE, MAX_VALUE);
+        int secondNumber = Utils.getRandomNumber(MIN_VALUE, MAX_VALUE);
 
         String question = firstNumber + " " + operator + " " + secondNumber;
         String answer = getAnswer(operator, firstNumber, secondNumber);
